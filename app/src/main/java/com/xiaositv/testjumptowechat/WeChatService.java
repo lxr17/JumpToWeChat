@@ -40,7 +40,7 @@ public class WeChatService extends AccessibilityService {
         Log.e(TAG, event.getEventType() + "");
         Log.e(TAG, event.getClassName() + "");
 
-        if (ConstantClass.flag == 0) {
+        if (Constant.flag == 0) {
             return;
         }
 
@@ -104,17 +104,17 @@ public class WeChatService extends AccessibilityService {
                 }
 
                 Bundle arguments = new Bundle();
-                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "tianheng48");
+                arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, Constant.wechatId);
                 editTextNode.get(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments);
             }
 
         } else if (LIST_VIEW_NAME.equals(event.getClassName())) {
-            List<AccessibilityNodeInfo> textNodeList = event.getSource().findAccessibilityNodeInfosByText("微信号: tianheng48");
+            List<AccessibilityNodeInfo> textNodeList = event.getSource().findAccessibilityNodeInfosByText("微信号: " + Constant.wechatId);
 
             if (textNodeList.size() > 0) {
                 textNodeList.get(0).getParent().performAction(AccessibilityNodeInfo.ACTION_CLICK);
 
-                ConstantClass.flag = 0;
+                Constant.flag = 0;
             }
 
         }

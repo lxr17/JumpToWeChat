@@ -7,4 +7,8 @@
     <string name="service_wechat_label1">微信助手1</string>
 
     <string name="service_wechat_description">微信助手描述</string>
+
+    <string name="edit_text_hint">请输入好友微信号</string>
+
+    <string name="jump_to_wechat">Jump To WeChat</string>
 </resources>
