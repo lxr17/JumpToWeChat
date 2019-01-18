@@ -54,19 +54,18 @@ public class WeChatService extends AccessibilityService {
     private String WECHAT_TEXT_ID = "com.tencent.mm:id/km";
 
     Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            Constant.flag = 0;
+            Constant.wechatId = null;
+        }
+    };
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
 
         // 两秒后如果还没有任何的事件，则停止监听
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                Constant.flag = 0;
-                Constant.wechatId = null;
-            }
-        };
-
         handler.removeCallbacks(runnable);
         handler.postDelayed(runnable, 2000);
 
