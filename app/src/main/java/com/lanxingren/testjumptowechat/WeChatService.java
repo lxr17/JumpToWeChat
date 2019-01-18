@@ -2,6 +2,7 @@ package com.lanxingren.testjumptowechat;
 
 import android.accessibilityservice.AccessibilityService;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -52,8 +53,22 @@ public class WeChatService extends AccessibilityService {
     private String LIST_VIEW_NAME = "android.widget.ListView";
     private String WECHAT_TEXT_ID = "com.tencent.mm:id/km";
 
+    Handler handler = new Handler();
+
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
+
+        // 两秒后如果还没有任何的事件，则停止监听
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Constant.flag = 0;
+                Constant.wechatId = null;
+            }
+        };
+
+        handler.removeCallbacks(runnable);
+        handler.postDelayed(runnable, 2000);
 
         Log.e(TAG, event.getEventType() + "");
         Log.e(TAG, event.getClassName() + "");
