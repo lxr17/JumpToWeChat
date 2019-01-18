@@ -1,0 +1,2 @@
+# JumpToWeChat
+通过AccessibilityService服务直接从app内部跳转到指定好友聊天界面。
