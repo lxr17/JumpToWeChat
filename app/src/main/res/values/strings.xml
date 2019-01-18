@@ -11,4 +11,6 @@
     <string name="edit_text_hint">请输入好友微信号</string>
 
     <string name="jump_to_wechat">Jump To WeChat</string>
+
+    <string name="clear_content">取消</string>
 </resources>

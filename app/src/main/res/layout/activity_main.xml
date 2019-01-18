@@ -4,11 +4,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/et_wechat_id"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_text_hint" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_wechat_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/btn_clear"
+            android:hint="@string/edit_text_hint" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/clear_content" />
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/btn_jump"

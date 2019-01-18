@@ -16,9 +16,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final EditText editText = findViewById(R.id.et_wechat_id);
-        Button button = findViewById(R.id.btn_jump);
+        Button clearButton = findViewById(R.id.btn_clear);
+        Button jumpButton = findViewById(R.id.btn_jump);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editText.setText("");
+            }
+        });
+
+        jumpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
