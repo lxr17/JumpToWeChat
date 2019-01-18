@@ -1,4 +1,4 @@
-package com.xiaositv.testjumptowechat;
+package com.lanxingren.testjumptowechat;
 
 import android.content.ComponentName;
 import android.content.Intent;

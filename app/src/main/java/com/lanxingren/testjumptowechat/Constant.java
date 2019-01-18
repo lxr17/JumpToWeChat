@@ -1,4 +1,4 @@
-package com.xiaositv.testjumptowechat;
+package com.lanxingren.testjumptowechat;
 
 /**
  * Created by he_jhua on 2019/1/17.

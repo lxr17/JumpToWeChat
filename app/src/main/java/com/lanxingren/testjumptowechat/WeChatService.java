@@ -1,4 +1,4 @@
-package com.xiaositv.testjumptowechat;
+package com.lanxingren.testjumptowechat;
 
 import android.accessibilityservice.AccessibilityService;
 import android.os.Bundle;
