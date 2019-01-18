@@ -30,6 +30,11 @@ public class WeChatService extends AccessibilityService {
     private final String EDIT_TEXT_ID = "com.tencent.mm:id/ka";
 
     /**
+     * 微信主页面ViePage的id
+     */
+    private final String VIEW_PAGE_ID = "com.tencent.mm:id/bko";
+
+    /**
      * 微信主页面活动id
      */
     private String LAUNCHER_ACTIVITY_NAME = "com.tencent.mm.ui.LauncherUI";
@@ -82,8 +87,10 @@ public class WeChatService extends AccessibilityService {
 
         List<AccessibilityNodeInfo> searchNode = event.getSource().findAccessibilityNodeInfosByViewId(SEARCH_ID);
         List<AccessibilityNodeInfo> wechatNode = event.getSource().findAccessibilityNodeInfosByViewId(WECHAT_ID);
+        List<AccessibilityNodeInfo> viewPageNode = event.getSource().findAccessibilityNodeInfosByViewId(VIEW_PAGE_ID);
 
-        if (searchNode.size() == 2) {
+        // 由于搜索控件在多个页面都有，所以还得判断是否在主页面
+        if (searchNode.size() > 1 && viewPageNode.size() > 0) {
             // 点击“搜索”按钮
             if (searchNode.get(0).getParent().isClickable()) {
                 searchNode.get(0).getParent().performAction(AccessibilityNodeInfo.ACTION_CLICK);
