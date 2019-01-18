@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestJumpToWeChat</string>
+
+    <string name="service_wechat_label">微信助手</string>
+
+
+    <string name="service_wechat_label1">微信助手1</string>
+
+    <string name="service_wechat_description">微信助手描述</string>
+</resources>
