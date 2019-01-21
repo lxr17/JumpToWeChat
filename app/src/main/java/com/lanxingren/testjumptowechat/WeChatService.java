@@ -99,9 +99,13 @@ public class WeChatService extends AccessibilityService {
             }
         }
 
-        List<AccessibilityNodeInfo> searchNode = event.getSource().findAccessibilityNodeInfosByViewId(SEARCH_ID);
-        List<AccessibilityNodeInfo> wechatNode = event.getSource().findAccessibilityNodeInfosByViewId(WECHAT_ID);
-        List<AccessibilityNodeInfo> viewPageNode = event.getSource().findAccessibilityNodeInfosByViewId(VIEW_PAGE_ID);
+        // 用getRootInActiveWindow是为了防止找不到搜索按钮的问题
+        List<AccessibilityNodeInfo> searchNode = getRootInActiveWindow().findAccessibilityNodeInfosByViewId(SEARCH_ID);
+        List<AccessibilityNodeInfo> wechatNode = getRootInActiveWindow().findAccessibilityNodeInfosByViewId(WECHAT_ID);
+        List<AccessibilityNodeInfo> viewPageNode = getRootInActiveWindow().findAccessibilityNodeInfosByViewId(VIEW_PAGE_ID);
+
+        Log.e(TAG, "searchNode:" + searchNode.size());
+        Log.e(TAG, "viewPageNode:" + viewPageNode.size());
 
         // 由于搜索控件在多个页面都有，所以还得判断是否在主页面
         if (searchNode.size() > 1 && viewPageNode.size() > 0) {
@@ -144,6 +148,11 @@ public class WeChatService extends AccessibilityService {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+                // 输入框内清空
+                Bundle clear = new Bundle();
+                clear.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, "");
+                editTextNode.get(0).performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, clear);
 
                 // 输入框内输入查询的微信号
                 Bundle arguments = new Bundle();
